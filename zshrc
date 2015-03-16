@@ -108,8 +108,9 @@ syspip(){
 PATH=$PATH:$HOME/bin
 
 alias ws="cd ~/Workspace"
-alias mz="cd ~/Workspace/mozart"
-alias tt="cd ~/Workspace/tut"
+alias wsc="cd ~/Workspace/concerto/"
+alias mz="cd ~/Workspace/concerto/mozart"
+alias tt="cd ~/Workspace/concerto/tut"
 alias dl="cd ~/Downloads"
 alias l="gls -pla --color=auto --group-directories-first"
 alias redisstart='sudo launchctl start io.redis.redis-server'
