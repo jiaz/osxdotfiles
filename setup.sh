@@ -10,7 +10,7 @@ if [ ! -d ~/.spf13-vim-3 ]; then
 fi
 
 
-files=("gitconfig" "vimrc.local" "zshenv" "zshrc")
+files=("gitconfig" "vimrc.local" "zshenv" "zshrc" "ackrc")
 
 for file in ${files[*]}; do
     [ -L ~/.${file} ] && unlink ~/.${file}
