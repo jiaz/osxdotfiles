@@ -86,7 +86,7 @@ export EDITOR='vim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-eval "$(rbenv init -)"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 export NVM_DIR="/Users/jiaji.zhou/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . $NVM_DIR/nvm.sh
@@ -123,5 +123,6 @@ alias gitcheck="git ls-files --error-unmatch"
 alias jkserve="bundle exec jekyll serve"
 alias genschema='node tools/iodocs/generate_schema.js --stage dev_unit_test all tools/iodocs/server/public/data/docs'
 alias runiodocs='node tools/iodocs/server/app.js -c tools/iodocs/server/config.json'
+alias v='vagrant'
 
 nvm use 0.10

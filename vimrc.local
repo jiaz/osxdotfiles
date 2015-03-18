@@ -1,5 +1,3 @@
-set nospell
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => GUI related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -56,6 +54,12 @@ set incsearch
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
+
+set clipboard=unnamed
+
+set noautochdir
+
+set nospell
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
@@ -265,8 +269,30 @@ let g:ctrlp_max_height = 20
 " => Nerd Tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>nn :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark 
 map <leader>nf :NERDTreeFind<cr>
 
 let NERDTreeQuitOnOpen=0
 let NERDTreeMouseMode=1
+
+let g:syntastic_python_checkers=['python']
+let g:pymode_lint_ignore = "E501,W"
+
+" file is large from 10mb
+let g:LargeFile = 1024 * 1024 * 4
+augroup LargeFile
+    autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
+augroup END
+
+function LargeFile()
+    " no syntax highlighting etc
+    set eventignore+=FileType
+    " save memory when other file is viewed
+    setlocal bufhidden=unload
+    " is read-only (write with :w new_filename)
+    setlocal buftype=nowrite
+    " no undo possible
+    setlocal undolevels=-1
+    " display message
+    autocmd VimEnter *  echo "The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB, so some options are changed (see .vimrc for details)."
+endfunction
+
