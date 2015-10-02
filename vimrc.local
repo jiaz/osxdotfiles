@@ -3,15 +3,17 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set font according to system
 if has("mac") || has("macunix")
-    set gfn=Inconsolata:h14,Menlo:h15
+    set t_Co=256
+    set gfn=Consolas:h12,Menlo:h12
 elseif has("win16") || has("win32")
-    set gfn=Source\ Code\ Pro:h12,Bitstream\ Vera\ Sans\ Mono:h11
+    set gfn=Consolas:h12,Bitstream\ Vera\ Sans\ Mono:h12
 elseif has("linux")
-    set gfn=Source\ Code\ Pro:h12,Bitstream\ Vera\ Sans\ Mono:h11
+    set gfn=Consolas:h12,Bitstream\ Vera\ Sans\ Mono:h12
 elseif has("unix")
-    set gfn=Monospace\ 11
+    set gfn=Monospace\ 12
 endif
-"colorscheme Tomorrow-Night-Eighties
+
+colorscheme solarized
 
 " Disable scrollbars (real hackers don't use scrollbars for navigation!)
 set guioptions-=r
@@ -27,7 +29,6 @@ endif
 if has("gui_running")
     set guioptions-=T
     set guioptions-=e
-    set t_Co=256
     set guitablabel=%M\ %t
 endif
 

@@ -1,24 +1,21 @@
 #!/bin/sh
+set -e
 
 # TODO: setup brew things
 
 # TODO: setup ohmyzsh
 
 # setup spf13vim
-if [ ! -d ~/.spf13-vim-3 ]; then
-    curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh && rm spf13-vim.sh
-fi
+curl http://j.mp/spf13-vim3 -L -o - | sh
 
-
-files=("gitconfig" "vimrc.local" "vimrc.bundles.local" "zshenv" "zshrc" "ackrc")
+files=("vimrc.local" "vimrc.bundles.local" "vimrc.before.local" "zshrc" "ackrc")
 
 for file in ${files[*]}; do
     [ -L ~/.${file} ] && unlink ~/.${file}
-    [ -e ~/.${file} ] && echo ".${file} already exists, please rename or delete it." && exit
+    [ -e ~/.${file} ] && mv ~/.${file} ~/.${file}.bak
 done
 
 for file in ${files[*]}; do
-    [ -L ~/.${file} ] && unlink ~/.${file}
     echo "linking $file"
     ln -s `pwd`/$file ~/.$file
 done
