@@ -1,0 +1,23 @@
+[credential]
+	helper = osxkeychain
+[alias]
+	ecco = !/Users/jiaji.zhou/ecco-git/ecco-hooks
+[core]
+	autocrlf = false
+	safecrlf = warn
+	editor = emacs
+[push]
+	default = simple
+[diff]
+	tool = bc3
+[difftool "bc3"]
+	trustExitCode = true
+	prompt = false
+[merge]
+	tool = bc3
+[mergetool "bc3"]
+	trustExitCode = true
+	prompt = false
+[user]
+	name = jiaz
+	email = jiaji.zh@gmail.com

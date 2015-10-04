@@ -7,12 +7,9 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 export PATH="$HOME/bin:~/.rbenv/shims:/usr/local/bin:$PATH"
 
-# virtualenvwrapper workon home folder
-WORKON_HOME=$HOME/PyEnvs
-
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git ssh-agent virtualenv virtualenvwrapper zsh-syntax-highlighting)
+plugins=(git ssh-agent virtualenv zsh-syntax-highlighting)
 
 # User configuration
 
@@ -21,7 +18,7 @@ source $ZSH/oh-my-zsh.sh
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-export EDITOR='vi'
+export EDITOR='emacs'
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -39,9 +36,11 @@ alias gs="git status"
 alias gd="git difftool"
 alias gitcheck="git ls-files --error-unmatch"
 alias jkserve="bundle exec jekyll serve"
-alias emacs="/usr/local/cellar/emacs/24.5/emacs.app/contents/macos/emacs -nw"
+alias e="/Applications/Emacs.app/Contents/MacOS/Emacs"
+alias ec="emacsclient -t"
+alias er="launchctl unload /Library/LaunchAgents/gnu.emacs.daemon.plist && launchctl load /Library/LaunchAgents/gnu.emacs.daemon.plist"
 alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
-alias vi="/Applications/MacVim.app/Contents/MacOS/Vim"
+alias vi="vim"
 
 ############
 # Ruby Env #

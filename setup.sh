@@ -1,21 +1,35 @@
-#!/bin/sh
+#!/usr/bin/env sh
+
 set -e
 
-# TODO: setup brew things
+# get script dir
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}"  )" && pwd  )
 
-# TODO: setup ohmyzsh
+. func.sh
 
-# setup spf13vim
-curl http://j.mp/spf13-vim3 -L -o - | sh
+# general folder structure
+mkdir -p ~/Workspace/tools
+mkdir -p ~/bin
 
-files=("vimrc.local" "vimrc.bundles.local" "vimrc.before.local" "zshrc" "ackrc")
+run_setup git
 
-for file in ${files[*]}; do
-    [ -L ~/.${file} ] && unlink ~/.${file}
-    [ -e ~/.${file} ] && mv ~/.${file} ~/.${file}.bak
-done
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    run_setup osx
+    run_setup osxtools
+    which brew > /dev/null || ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew update
+    run_setup fonts
+    run_setup iterm2
+fi
 
-for file in ${files[*]}; do
-    echo "linking $file"
-    ln -s `pwd`/$file ~/.$file
-done
+run_setup zsh
+run_setup vim
+run_setup emacs
+run_setup node
+run_setup python
+run_setup ruby
+run_setup clojure
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    brew linkapps
+fi
