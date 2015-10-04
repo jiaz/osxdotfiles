@@ -8,6 +8,6 @@ fi
 
 eval "$(rbenv init -)"
 
-rbenv install 2.1.7
+[ -z "$(rbenv versions | grep 2.1.7)" ] && rbenv install 2.1.7
 rbenv rehash
 rbenv global 2.1.7
