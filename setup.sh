@@ -15,9 +15,9 @@ run_setup git
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     run_setup osx
-    run_setup osxtools
     which brew > /dev/null || ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     brew update
+    run_setup osxtools
     run_setup fonts
     run_setup iterm2
 fi
