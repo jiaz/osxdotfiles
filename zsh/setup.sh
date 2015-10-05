@@ -14,4 +14,4 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 
 # Link zshrc
 create_link ${1}/zshrc ~/.zshrc
-create_link ${1}/zshenv ~/.zshenv
+create_link ${1}/zlogin ~/.zlogin
