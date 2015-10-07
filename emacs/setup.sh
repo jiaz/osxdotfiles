@@ -16,8 +16,7 @@ create_link ${1}/spacemacs ~/.spacemacs
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # Install LaunchAgents
-    sed -e 's/{USERNAME}/'"${USER}"'/g' ${1}/gnu.emacs.daemon.plist > /tmp/gnu.emacs.daemon.plist.tmp
-    sudo mv /tmp/gnu.emacs.daemon.plist.tmp /Library/LaunchAgents/gnu.emacs.daemon.plist
+    copy_replace gnu.emacs.daemon.plist ~/Library/LaunchAgents/gnu.emacs.daemon.plist
     launchctl load /Library/LaunchAgents/gnu.emacs.daemon.plist
 fi
 

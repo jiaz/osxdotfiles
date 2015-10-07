@@ -16,6 +16,10 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
+e() {
+    /Applications/Emacs.app/Contents/MacOS/Emacs $@ 2>&1 > /dev/null &
+}
+
 alias ws="cd ~/Workspace"
 alias dl="cd ~/Downloads"
 alias l="ls -lha"
@@ -27,9 +31,8 @@ alias gs="git status"
 alias gd="git difftool"
 alias gitcheck="git ls-files --error-unmatch"
 alias jkserve="bundle exec jekyll serve"
-alias e="/Applications/Emacs.app/Contents/MacOS/Emacs"
-alias ec="emacsclient -t"
-alias er="launchctl unload /Library/LaunchAgents/gnu.emacs.daemon.plist && launchctl load /Library/LaunchAgents/gnu.emacs.daemon.plist"
+alias ec="emacsclient -nw"
+alias er="emacsclient -e '(kill-emacs)' > /dev/null 2>&1; launchctl unload ~/Library/LaunchAgents/gnu.emacs.daemon.plist; launchctl load ~/Library/LaunchAgents/gnu.emacs.daemon.plist"
 alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 alias vi="vim"
 

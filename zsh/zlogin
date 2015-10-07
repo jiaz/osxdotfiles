@@ -8,6 +8,21 @@ export PATH="$HOME/bin:$PATH"
 export EDITOR='emacs'
 
 ############
+# Java Env #
+############
+
+# jenv
+export JENV_ROOT="$HOME/.jenv"
+
+# Add jenv root to PATH
+if [[ -d $JENV_ROOT ]];then
+    export PATH="$JENV_ROOT/shims:$PATH"
+fi
+
+# Initialize jenv
+if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+
+############
 # Ruby Env #
 ############
 
