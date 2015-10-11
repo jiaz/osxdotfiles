@@ -20,6 +20,10 @@ e() {
     /Applications/Emacs.app/Contents/MacOS/Emacs $@ 2>&1 > /dev/null &
 }
 
+find_port() {
+    lsof -i tcp:$@
+}
+
 alias ws="cd ~/Workspace"
 alias dl="cd ~/Downloads"
 alias l="ls -lha"
