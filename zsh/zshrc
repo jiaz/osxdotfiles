@@ -5,7 +5,7 @@ ZSH_THEME="ys"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git ssh-agent virtualenv zsh-syntax-highlighting)
+plugins=(git ssh-agent pyenv rbenv zsh-syntax-highlighting)
 
 # User configuration
 
@@ -22,6 +22,15 @@ e() {
 
 find_port() {
     lsof -i tcp:$@
+}
+
+watch_ip() {
+    watch -n1 "netstat -an | grep '${1}' | grep EST | awk '{print \$4, \$5, \$6;}' | sort"
+}
+
+watch_host() {
+    ip=`nslookup ${1} | tail -n2 | head -n1 | awk '{print $2}'`
+    watch_ip $ip
 }
 
 alias ws="cd ~/Workspace"

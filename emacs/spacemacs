@@ -37,6 +37,8 @@ values."
             shell-default-shell 'eshell
             shell-default-height 30
             shell-default-position 'bottom)
+     clojure
+     javascript
      ;; spell-checking
      ;; syntax-checking
      ;; version-control
@@ -205,6 +207,8 @@ user code."
 layers configuration. You are free to put any user code."
   (setq powerline-default-separator 'nil)
   (global-linum-mode t)
+  (setq-default js2-basic-offset 4)
+  (setq-default js-indent-level 4)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
