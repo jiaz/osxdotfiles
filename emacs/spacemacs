@@ -24,13 +24,14 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      auto-completion
-     ;; smex
-     ;; better-defaults
+     smex
+     better-defaults
      emacs-lisp
      osx
      git
      markdown
      org
+     scala
      (python :variables
              python-test-runner 'nose)
      (shell :variables
@@ -85,19 +86,19 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(monokai
-                         spacemacs-dark
+   dotspacemacs-themes '(spacemacs-dark
                          spacemacs-light
                          solarized-light
                          solarized-dark
+                         monokai
                          leuven
                          zenburn)
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Fira Mono for Powerline"
-                               :size 14
+   dotspacemacs-default-font '("Source Code Pro"
+                               :size 12
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -209,6 +210,14 @@ layers configuration. You are free to put any user code."
   (global-linum-mode t)
   (setq-default js2-basic-offset 4)
   (setq-default js-indent-level 4)
+
+  ;; Switching windows
+  (global-set-key [s-left] 'windmove-left)
+  (global-set-key [s-right] 'windmove-right)
+  (global-set-key [s-up] 'windmove-up)
+  (global-set-key [s-down] 'windmove-down)
+
+  (setq insert-directory-program "/usr/local/bin/gls")
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
